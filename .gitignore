@@ -1,0 +1,4 @@
+#File to ignore
+my_put
+my_put.c
+my_putchar
