@@ -10,67 +10,67 @@
 
 int _printf(const char *format, ...)
 {
-  va_list args;
-  int count = 0;
+va_list args;
+int count = 0;
 
-  va_start(args, format);
+va_start(args, format);
 
-  while (*format)
+while (*format)
+{
+if (*format == '%' && (*(format + 1) != '\0'))
+{
+  format++;
+  switch (*format)
     {
-      if (*format == '%' && (*(format + 1) != '\0'))
-	{
-	  format++;
-	  switch (*format)
-	    {
-	      case 'c':
-		count += handle_char(va_arg(args, int));
-		break;
+      case 'c':
+	count += handle_char(va_arg(args, int));
+	break;
 
-	      case 's':
-		count += handle_string(va_arg(args, char *));
-		break;
+      case 's':
+	count += handle_string(va_arg(args, char *));
+	break;
 
-	      case '%':
-		_putchar('%');
-		count++;
-		break;
+      case '%':
+	_putchar('%');
+	count++;
+	break;
 
-	      default:
-		_putchar('%');
-		_putchar(*format);
-		count += 2;
-		break;
-	    }
-	}
-      else
-	{
-	  _putchar(*format);
-	  count++;
-	}
-      format++;
+      default:
+	_putchar('%');
+	_putchar(*format);
+	count += 2;
+	break;
     }
-  va_end(args);
-  return (count);
+}
+else
+{
+  _putchar(*format);
+  count++;
+}
+format++;
+}
+va_end(args);
+return (count);
 }
 
 int handle_char(int c)
 {
-  _putchar(c);
-  return (1);
+_putchar(c);
+return (1);
 }
 
 int handle_string(char *s)
 {
-  int count = 0;
+int count = 0;
 
-  if (!s)
-    s = "(null)";
+if (!s)
+s = "(null)";
 
-  while (*s)
-    {
-      _putchar(*s);
-      s++;
-      count++;
-    }
-  return (count);
+while (*s)
+{
+_putchar(*s);
+s++;
+count++;
+}
+return (count);
 }
