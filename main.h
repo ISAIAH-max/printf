@@ -5,13 +5,15 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-// Function prototypes
+// Function prototype printf
 int _printf(const char *format, ...);
+
+// Function prototypes for handling different formats
 void handle_char(char c);
 void handle_string(const char *s);
 void handle_percent(void);
 
-// Function prototype for my own putchar
+// Function prototype for for my own putchar
 int _putchar(char c);
 
 #endif // MAIN_H
