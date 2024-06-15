@@ -9,8 +9,8 @@
 int _printf(const char *format, ...);
 
 /* Function prototypes for handling different formats */
-void handle_char(char c);
-void handle_string(const char *s);
+int handle_char(char c);
+int handle_string(const char *s);
 
 /* Function prototype for for my own putchar */
 int _putchar(char c);
