@@ -51,24 +51,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-int handle_char(int c)
-{
-	_putchar(c);
-	return (1);
-}
-
-int handle_string(char *s)
-{
-	int count = 0;
-
-	if (!s)
-		s = "(null)";
-	while (*s)
-		{
-			_putchar(*s);
-			s++;
-			count++;
-		}
-	return (count);
-}
