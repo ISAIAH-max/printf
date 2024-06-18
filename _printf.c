@@ -8,15 +8,14 @@
  * (excluding the null byte used to end output to strings)
  */
 
-int _printf(const char *format, ...) 
+int _printf(const char *format, ...)
 {
-		
 	va_list args;
-		
+
 	int count = 0;
-	
+
 	va_start(args, format);
-	
+
 	while (*format)
 	{
 		if (*format == '%' && (*(format + 1) != '\0'))
@@ -25,10 +24,7 @@ int _printf(const char *format, ...)
 		switch (*format)
 		{
 			case 'c':
-				count += handle_char(va_arg(args, int));
-				break;
-			case 's':
-				count += handle_string(va_arg(args, char *));
+				count += _printf_char(args);
 				break;
 			case '%':
 				_putchar('%');
