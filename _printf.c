@@ -10,40 +10,51 @@
 
 int _printf(const char *format, ...)
 {
-	va_list args;
+  va_list args;
+  int i = 0, j = 0, count = 0;
+  printer_t funcs[] = {
+    {"c", _printf_char},
+    {"s", _printf_string},
+  };
 
-	int count = 0;
+  va_start(args, format);
 
-	va_start(args, format);
+  while (format && (*(format + i)))
+  {
+    if (format[i] == '%')
+    {
+      i++;
+      if (format[i] == '%')
+      {
+	_putchar('%');
+	count++;
+      }
+      else
+      {
+	j = 0;
+	while (j < 2 && format[i] != *(funcs[j].symbol))
+	  j++;
 
-	while (*format)
+	if (j < 2)
 	{
-		if (*format == '%' && (*(format + 1) != '\0'))
+	  funcs[j].print(args);
+	  count++;
+	}
+	else
 	{
-		format++;
-		switch (*format)
-		{
-			case 'c':
-				count += _printf_char(args);
-				break;
-			case '%':
-				_putchar('%');
-				count++;
-				break;
-			default:
-				_putchar('%');
-				_putchar(*format);
-				count += 2;
-				break;
-		}
+	  _putchar('%');
+	  _putchar(format[i]);
+	  count += 2;
 	}
-			else
-			{
-				_putchar(*format);
-				count++;
-			}
-		format++;
-	}
-	va_end(args);
-	return (count);
+      }
+    }
+    else
+    {
+      _putchar(format[i]);
+      count++;
+    }
+    i++;
+  }
+  va_end(args);
+  return (count);
 }
