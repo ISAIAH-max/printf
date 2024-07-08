@@ -14,11 +14,10 @@ int _printf(const char *format, ...)
     int i = 0, j = 0, count = 0;
     printer_t funcs[] = {
 		{"c", _printf_char},
-        {"s", _printf_string},
+		{"s", _printf_string},
 	};
 
 	va_start(args, format);
-	
 	while (format && (*(format + i)))
 	{
 		if (format[i] == '%')
