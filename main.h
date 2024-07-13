@@ -19,7 +19,6 @@ int _printf_char(va_list args);
 int _printf_string(va_list args);
 int _printf_int(va_list args);
 
-
 /* Function prototype for for my own putchar */
 int _putchar(char c);
 
