@@ -6,12 +6,14 @@
  *
  */
 
-void _printf_string(va_list args)
+int _printf_string(va_list args)
 {
+  int i;
   char *s = va_arg(args, char *);
 
   if (s == NULL)
     s = "(null)";
-  while (*s)
-    _putchar(*s++);
+  for (i = 0; s[i]; i++)
+    _putchar(s[i]);
+  return i;
 }
