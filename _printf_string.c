@@ -4,7 +4,7 @@
  * _printf_string - Prints a string
  * @args: The variable argument list containing the string to print.
  *
- * return: number of character of a string printed
+ * Return: number of character of a string printed
  */
 
 int _printf_string(va_list args)
