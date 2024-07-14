@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 
 	if (!format)
 	{
-		return (-1);
+		return (0);
 	}
 
 	while (format && (*(format + i)))
