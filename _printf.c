@@ -10,6 +10,11 @@
 
 int _printf(const char *format, ...)
 {
+	if (!format)
+	{
+		return (-1);
+	}
+
 	va_list args;
     int i = 0, j = 0, count = 0;
     printer_t funcs[] = {
