@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	if (!format)
+	if (!format || (format[0] == '%' && format[1] == '\0'))
 	{
 		return (-1);
 	}
@@ -50,10 +50,6 @@ int _printf(const char *format, ...)
 					count += _putchar(format[i]);
 				}
 			}
-		}
-		else if (format[0] == '%' && format[1] == '\0')
-		{
-			return (-1);
 		}
 		else
 		{
