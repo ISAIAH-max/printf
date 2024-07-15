@@ -11,17 +11,22 @@ int _printf_int(va_list args)
   int n = va_arg(args, int);
   char buffer[20];
   int i = 0, j, count = 0;
+  unsigned int num;
 
   if (n < 0)
     {
       count += _putchar('-');
       n = -n;
     }
-  do {
-      buffer[i++] = (n % 10) + '0';
-      n /= 10;
+  else
+    {
+      num = n;
     }
-  while (n > 0);
+  do {
+      buffer[i++] = (num % 10) + '0';
+      num /= 10;
+    }
+  while (num > 0);
 
   for (j = i - 1; j >= 0; j--)
     {
