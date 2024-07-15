@@ -9,7 +9,10 @@ int _printf(const char *format, ...)
 	va_list args;
 	int i = 0, j = 0, count = 0;
 	printer_t funcs[] = {
-  		{"c", _printf_char}, {"s", _printf_string}, {"d", _printf_int}, {"i", _printf_int}
+  		{"c", _printf_char},
+		{"s", _printf_string},
+		{"d", _printf_int},
+		{"i", _printf_int}
 	};
 	va_start(args, format);
 
