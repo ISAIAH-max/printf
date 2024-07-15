@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 		{"s", _printf_string},
   		{"d", _printf_int},
   		{"i", _printf_int}
-	}
+	};
 	va_start(args, format);
 
 	if (!format || (format[0] == '%' && format[1] == '\0'))
