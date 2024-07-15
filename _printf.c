@@ -1,22 +1,20 @@
 #include "main.h"
-
 /**
  * _printf - write output to stdout, the standard output stream.
  * @format: a character string which is composed of zero or more directives.
- *
  * Return: the number of characters printed
  * (excluding the null byte used to end output to strings)
  */
-
 int _printf(const char *format, ...)
 {
-	va_list args;
+    va_list args;
     int i = 0, j = 0, count = 0;
     printer_t funcs[] = {
 		{"c", _printf_char},
 		{"s", _printf_string},
+		{"d", _printf_int},
+		{"i", _printf_int}
 	};
-
 	va_start(args, format);
 	while (format && (*(format + i)))
 	{
@@ -25,8 +23,7 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == '%')
 			{
-				_putchar('%');
-				count++;
+				count += _putchar('%');
 			}
 			else
 			{
@@ -37,21 +34,18 @@ int _printf(const char *format, ...)
 				}
 				if (j < 2)
 				{
-					funcs[j].print(args);
-					count++;
+					count += funcs[j].print(args);
 				}
 				else
 				{
-					_putchar('%');
-					_putchar(format[i]);
-					count += 2;
+					count += _putchar('%');
+					count += _putchar(format[i]);
 				}
 			}
 		}
 		else
 		{
-			_putchar(format[i]);
-			count++;
+			count += _putchar(format[i]);
 		}
 		i++;
 	}
