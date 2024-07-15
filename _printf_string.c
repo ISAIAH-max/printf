@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- *_printf_string - Prints a string
- *@args: The variable argument list containing the string to print.
- *
+ * _printf_string - Prints a string
+ * @args: The variable argument list containing the string to print.
+ * Return: number of character of string printed
  */
 
 int _printf_string(va_list args)
@@ -15,5 +15,5 @@ int _printf_string(va_list args)
     s = "(null)";
   for (i = 0; s[i]; i++)
     _putchar(s[i]);
-  return i;
+  return (i);
 }
