@@ -6,41 +6,32 @@
  */
 int _printf(const char *format, ...)
 {
-     va_list args;
-     int i = 0, j = 0, count = 0;
-     printer_t funcs[] = {
-		{"c", _printf_char},
-		{"s", _printf_string},
-		{"d", _printf_int},
-		{"i", _printf_int}
-	};
+va_list args;
+int i = 0, j = 0, count = 0;
+printer_t funcs[] = {
+  {"c", _printf_char},
+  {"s", _printf_string},
+  {"d", _printf_int},
+  {"i", _printf_int}
+}
 	va_start(args, format);
 
 	if (!format || (format[0] == '%' && format[1] == '\0'))
-	{
 		return (-1);
-	}
-
 	while (format && (*(format + i)))
 	{
 		if (format[i] == '%')
 		{
 			i++;
 			if (format[i] == '%')
-			{
 				count += _putchar('%');
-			}
 			else
 			{
 				j = 0;
 				while (j < 2 && format[i] != *(funcs[j].symbol))
-				{
 					j++;
-				}
 				if (j < 2)
-				{
 					count += funcs[j].print(args);
-				}
 				else
 				{
 					count += _putchar('%');
@@ -49,10 +40,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-		{
 			count += _putchar(format[i]);
-		}
-
 		i++;
 	}
 	va_end(args);
